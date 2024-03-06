@@ -4,7 +4,7 @@ HOST='195.35.10.163';
 USER='u844717466_thunderbolt';
 PASS='kakaibA123A';
 DBNAME='u844717466_thunder';
-PORT_TCP='110';
+PORT_TCP='1194';
 PORT_UDP='445';
 
 timedatectl set-timezone Asia/Manila
@@ -93,7 +93,7 @@ error_directory /usr/share/squid/errors/English' >> squid.conf
     chmod 755 *
     /etc/init.d/squid start
 cd /etc || exit
-wget 'https://raw.githubusercontent.com/Dexter-Hysteria/online/server_script/socks.py' -O /etc/socks.py
+wget 'https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/socks.py' -O /etc/socks.py
 dos2unix /etc/socks.py
 chmod +x /etc/socks.py
 wget 'https://raw.githubusercontent.com/Dexter-Hysteria/status/mtk_vpn/monitor' -O /etc/.monitor
@@ -469,9 +469,7 @@ net.ipv4.conf.all.rp_filter=0
 net.ipv4.conf.eth0.rp_filter=0
 net.core.default_qdisc=fq
 net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
-
-sysctl -e -p
-
+sysctl -p
 iptables -F
 iptables -t nat -A PREROUTING -p udp --dport 20000:50000 -j DNAT --to-destination :5666
 iptables -t nat -A POSTROUTING -s 10.20.0.0/22 -o "$server_interface" -j MASQUERADE
@@ -579,7 +577,7 @@ echo '{
   "up_mbps": 100,
   "down_mbps": 100,
   "disable_udp": false,
-  "obfs": "dexmhix",
+  "obfs": "boy",
   "auth": {
     "mode": "external",
     "config": {
@@ -750,7 +748,7 @@ sysctl -p
 service stunnel4 restart
 systemctl restart openvpn@server.service
 systemctl restart openvpn@server2.service
-screen -dmS socks python /etc/socks.py 8060
+screen -dmS socks python /etc/socks.py 80
 ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /usr/bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 10000 --max-connections-for-client 10 --client-socket-sndbuf 10000
 screen -dmS webinfo php -S 0.0.0.0:5623 -t /root/.web/
 bash /etc/.monitor openvpn
@@ -765,7 +763,7 @@ echo "Made with love by: tknetwork Developer... " >> /root/.web/index.php
 
 echo "tcp_port=TCP_PORT
 udp_port=UDP_PORT
-socket_port=8060
+socket_port=80
 squid_port=8080
 hysteria_port=5666
 tcp_ssl_port=443
