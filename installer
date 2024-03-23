@@ -216,6 +216,9 @@ HOST='195.35.10.163';
 USER='u844717466_thunderbolt';
 PASS='kakaibA123A';
 DBNAME='u844717466_thunder';
+PORT_TCP='1194';
+PORT_SSL='443';
+PORT_UDP='53';
 EOM
 
 
@@ -614,7 +617,7 @@ USERNAME=$(echo "$AUTH" | cut -d ":" -f 1)
 PASSWORD=$(echo "$AUTH" | cut -d ":" -f 2)
 
 Query="SELECT user_name FROM users WHERE user_name='$USERNAME' AND auth_vpn=md5('$PASSWORD') AND status='live' AND is_freeze=0 AND is_ban=0 AND (duration > 0 OR vip_duration > 0 OR private_duration > 0)"
-user_name=`mysql -u $USER -p$PASS -D $DB -h $HOST -sN -e "$Query"`
+user_name=`mysql -u $USER -p$PASS -D $DB -h $ -sN -e "$Query"`
 [ "$user_name" != '' ] && [ "$user_name" = "$USERNAME" ] && echo "user : $username" && echo 'authentication ok.' && exit 0 || echo 'authentication failed.'; exit 1
 EOM
 
