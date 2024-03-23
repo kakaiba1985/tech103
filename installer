@@ -212,13 +212,10 @@ sed -i "s|PORT_TCP|$PORT_TCP|g" /etc/openvpn/server2.conf
 
 cat <<\EOM >/etc/openvpn/login/config.sh
 #!/bin/bash
-#Script Variables
-HOST='';
-USER='';
-PASS='';
-DBNAME='';
-
-OBFS='boy';
+HOST='DBHOST'
+USER='DBUSER'
+PASS='DBPASS'
+DB='DBNAME'
 EOM
 
 sed -i "s|DBHOST|$HOST|g" /etc/openvpn/login/config.sh
