@@ -83,7 +83,7 @@ http_reply_access allow all
 http_access deny all
 icp_access allow all
 always_direct allow all
-visible_hostname Dexter-Proxy
+visible_name Dexter-Proxy
 error_directory /usr/share/squid/errors/English' >> squid.conf
     cd /usr/share/squid/errors/English
     rm ERR_INVALID_URL
@@ -212,13 +212,10 @@ sed -i "s|PORT_TCP|$PORT_TCP|g" /etc/openvpn/server2.conf
 
 cat <<\EOM >/etc/openvpn/login/config.sh
 #!/bin/bash
-HOST='195.35.10.163';
-USER='u844717466_thunderbolt';
-PASS='kakaibA123A';
-DBNAME='u844717466_thunder';
-PORT_TCP='1194';
-PORT_SSL='443';
-PORT_UDP='53';
+HOST='DBHOST'
+USER='DBUSER'
+PASS='DBPASS'
+DB='DBNAME'
 EOM
 
 
