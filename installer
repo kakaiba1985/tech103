@@ -83,7 +83,7 @@ http_reply_access allow all
 http_access deny all
 icp_access allow all
 always_direct allow all
-visible_name Dexter-Proxy
+visible_hostname Dexter-Proxy
 error_directory /usr/share/squid/errors/English' >> squid.conf
     cd /usr/share/squid/errors/English
     rm ERR_INVALID_URL
@@ -217,9 +217,6 @@ USER='DBUSER'
 PASS='DBPASS'
 DB='DBNAME'
 EOM
-
-
-
 
 sed -i "s|DBHOST|$HOST|g" /etc/openvpn/login/config.sh
 sed -i "s|DBUSER|$USER|g" /etc/openvpn/login/config.sh
@@ -614,7 +611,7 @@ USERNAME=$(echo "$AUTH" | cut -d ":" -f 1)
 PASSWORD=$(echo "$AUTH" | cut -d ":" -f 2)
 
 Query="SELECT user_name FROM users WHERE user_name='$USERNAME' AND auth_vpn=md5('$PASSWORD') AND status='live' AND is_freeze=0 AND is_ban=0 AND (duration > 0 OR vip_duration > 0 OR private_duration > 0)"
-user_name=`mysql -u $USER -p$PASS -D $DB -h $ -sN -e "$Query"`
+user_name=`mysql -u $USER -p$PASS -D $DB -h $HOST -sN -e "$Query"`
 [ "$user_name" != '' ] && [ "$user_name" = "$USERNAME" ] && echo "user : $username" && echo 'authentication ok.' && exit 0 || echo 'authentication failed.'; exit 1
 EOM
 
