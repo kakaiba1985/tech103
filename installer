@@ -1,37 +1,1043 @@
+
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862
+863
+864
+865
+866
+867
+868
+869
+870
+871
+872
+873
+874
+875
+876
+877
+878
+879
+880
+881
+882
+883
+884
+885
+886
+887
+888
+889
+890
+891
+892
+893
+894
+895
+896
+897
+898
+899
+900
+901
+902
+903
+904
+905
+906
+907
+908
+909
+910
+911
+912
+913
+914
+915
+916
+917
+918
+919
+920
+921
+922
+923
+924
+925
+926
+927
+928
+929
+930
+931
+932
+933
+934
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966
+967
+968
+969
+970
+971
+972
+973
+974
+975
+976
+977
+978
+979
+980
 #!/bin/bash
 #Script Variables
+apt update
+apt install sudo
 HOST='195.35.10.163';
 USER='u844717466_thunderbolt';
 PASS='kakaibA123A';
 DBNAME='u844717466_thunder';
 PORT_TCP='1194';
+PORT_UDP='110';
 PORT_SSL='443';
-PORT_UDP='53';
-OBFS='boy';
+
+
+wget -O autodns "https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/python/efrenauto/autodns" && chmod +x autodns && sed -i -e 's/\r$//' ~/autodns && ./autodns
+
+DOMAIN="$(cat /root/subdomain)"
+NS="$(cat /root/ns.txt)"
 
 timedatectl set-timezone Asia/Riyadh
 
+if [[ $(grep "nogroup" /etc/group) ]]; then
+    cert_group="nogroup"
+fi
+
 install_require () {
-clear
-echo 'Installing dependencies.'
-{
+
+# Turn off various firewalls
+systemctl stop firewalld
+systemctl disable firewalld
+systemctl stop nftables
+systemctl disable nftables
+systemctl stop ufw
+systemctl disable ufw
+  
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export DEBIAN_FRONTEND=noninteractive
 apt update
+apt install -y lsof tar systemd dbus git
+apt install -y gnupg2 ca-certificates lsb-release debian-archive-keyring socat
 apt install -y curl wget cron python-minimal libpython-stdlib
-apt install -y iptables
+apt install -y iptables sudo
 apt install -y openvpn netcat httpie php neofetch vnstat
 apt install -y screen squid stunnel4 dropbear gnutls-bin python
 apt install -y dos2unix nano unzip jq virt-what net-tools default-mysql-client
 apt install -y mlocate dh-make libaudit-dev build-essential fail2ban
-clear
-}&>/dev/null
+
+touch /var/spool/cron/crontabs/root && chmod 600 /var/spool/cron/crontabs/root
+systemctl start cron && systemctl enable cron
+
+# Prevent the default bin directory of xray in some systems from missing
+mkdir /usr/local/bin >/dev/null 2>&1
+mkdir /usr/local/var >/dev/null 2>&1
+mkdir /usr/local/var/run >/dev/null 2>&1
+mkdir -m 777 /root/.web
 clear
 }
 
 install_squid(){
-clear
-echo 'Installing proxy.'
-{
+
 sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup
 echo "deb http://ftp.debian.org/debian/ jessie main contrib non-free
     deb-src http://ftp.debian.org/debian/ jessie main contrib non-free
@@ -94,24 +1100,29 @@ cd /etc || exit
 wget 'https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/socks.py' -O /etc/socks.py
 dos2unix /etc/socks.py
 chmod +x /etc/socks.py
-wget 'https://raw.githubusercontent.com/Dexter-Hysteria/online/server_script/inter_service/file/monitor' -O /etc/.monitor
-wget 'https://raw.githubusercontent.com/Dexter-Hysteria/online/server_script/inter_service/file/ws' -O /etc/.ws
-wget 'https://raw.githubusercontent.com/Dexter-Hysteria/online/server_script/inter_service/file/hysteria' -O /etc/.hysteria
-chmod +x /etc/.monitor
-chmod +x /etc/.ws
-chmod +x /etc/.hysteria
+
+wget 'https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/socks-ssh.py' -O /etc/socks-ssh.py
+dos2unix /etc/socks-ssh.py
+chmod +x /etc/socks-ssh.py
+
+wget 'https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/socks-ws-ssh.py' -O /etc/socks-ws-ssh.py
+dos2unix /etc/socks-ws-ssh.py
+chmod +x /etc/socks-ws-ssh.py
+
+wget 'https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/socks-ws-ssl.py' -O /etc/socks-ws-ssl.py
+dos2unix /etc/socks-ws-ssl.py
+chmod +x /etc/socks-ws-ssl.py
+
 rm /etc/apt/sources.list
 sudo cp /etc/apt/sources.list_backup /etc/apt/sources.list
-} &>/dev/null
 }
 
+#====================================================
+#	Installing OpenVPN
+#	Finalized: Dexter Eskalarte
+#====================================================
 
-
-install_openvpn()
-{
-clear
-echo "Installing openvpn."
-{
+install_openvpn() {
 mkdir -p /etc/openvpn/easy-rsa/keys
 mkdir -p /etc/openvpn/login
 mkdir -p /etc/openvpn/server
@@ -458,29 +1469,38 @@ chmod 755 /etc/openvpn/login/connect.sh
 chmod 755 /etc/openvpn/login/disconnect.sh
 chmod 755 /etc/openvpn/login/config.sh
 chmod 755 /etc/openvpn/login/auth_vpn
-}&>/dev/null
 }
 
 
 install_firewall_kvm () {
 clear
-echo "Installing iptables."
 echo "net.ipv4.ip_forward=1
 net.ipv4.conf.all.rp_filter=0
 net.ipv4.conf."$server_interface".rp_filter=0" >> /etc/sysctl.conf
 sysctl -p
-{
 iptables -F
-iptables -t nat -A PREROUTING -i "$server_interface" -p udp -m udp --dport 20000:50000 -j DNAT --to-destination :5666
+iptables -t nat -A PREROUTING -i "$server_interface" -p udp -m udp --dport 10000:50000 -j DNAT --to-destination :5666
 iptables -t nat -A POSTROUTING -s 10.20.0.0/22 -o "$server_interface" -j MASQUERADE
 iptables -t nat -A POSTROUTING -s 10.20.0.0/22 -o "$server_interface" -j SNAT --to-source "$server_ip"
 iptables -t nat -A POSTROUTING -s 10.30.0.0/22 -o "$server_interface" -j MASQUERADE
 iptables -t nat -A POSTROUTING -s 10.30.0.0/22 -o "$server_interface" -j SNAT --to-source "$server_ip"
 iptables -t filter -A INPUT -p udp -m udp --dport 20100:20900 -m state --state NEW -m recent --update --seconds 30 --hitcount 10 --name DEFAULT --mask 255.255.255.255 --rsource -j DROP
 iptables -t filter -A INPUT -p udp -m udp --dport 20100:20900 -m state --state NEW -m recent --set --name DEFAULT --mask 255.255.255.255 --rsource
+sudo iptables -I INPUT -p udp --dport 5300 -j ACCEPT &>/dev/null;
+sudo iptables -t nat -I PREROUTING -i $(ip route get 8.8.8.8 | awk '/dev/ {f=NR} f&&NR-1==f' RS=" ") -p udp --dport 53 -j REDIRECT --to-ports 5300 &>/dev/null;
+sudo ip6tables -I INPUT -p udp --dport 5300 -j ACCEPT &>/dev/null;
+sudo ip6tables -t nat -I PREROUTING -i $(ip route get 8.8.8.8 | awk '/dev/ {f=NR} f&&NR-1==f' RS=" ") -p udp --dport 53 -j REDIRECT --to-ports 5300 &>/dev/null;
+echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
+sudo apt -y install iptables-persistent
 iptables-save > /etc/iptables_rules.v4
 ip6tables-save > /etc/iptables_rules.v6
-}&>/dev/null
+
+# Maximum number of open files
+sed -i '/^\*\ *soft\ *nofile\ *[[:digit:]]*/d' /etc/security/limits.conf
+sed -i '/^\*\ *hard\ *nofile\ *[[:digit:]]*/d' /etc/security/limits.conf
+echo '* soft nofile 65536' >>/etc/security/limits.conf
+echo '* hard nofile 65536' >>/etc/security/limits.conf
 }
 
 install_stunnel() {
@@ -539,18 +1559,29 @@ enL3UGT+BhRAPiA1I5CcG29RqjCzQoaCNg==
 echo "debug = 0
 output = /tmp/stunnel.log
 cert = /etc/stunnel/stunnel.pem
+
 [openvpn-tcp]
 connect = PORT_TCP  
 accept = PORT_SSL 
+
 [openvpn-udp]
 connect = PORT_UDP
 accept = 444
+
+[ssh]
+connect = 22
+accept = 445
+
+[dropbear]
+connect = 442
+accept = 446
+
 " >> stunnel.conf
 
 sed -i "s|PORT_TCP|$PORT_TCP|g" /etc/stunnel/stunnel.conf
 sed -i "s|PORT_UDP|$PORT_UDP|g" /etc/stunnel/stunnel.conf
 sed -i "s|PORT_SSL|$PORT_SSL|g" /etc/stunnel/stunnel.conf
-cd /etc/default && rm stunnel4
+cd /etc/default && rm stunnel4 && rm dropbear
 
 echo 'ENABLED=1
 FILES="/etc/stunnel/*.conf"
@@ -558,15 +1589,202 @@ OPTIONS=""
 PPP_RESTART=0
 RLIMITS=""' >> stunnel4 
 
-chmod 755 stunnel4
+echo 'NO_START=0
+DROPBEAR_PORT=442
+DROPBEAR_EXTRA_ARGS=
+DROPBEAR_BANNER="/etc/banner"
+DROPBEAR_RECEIVE_WINDOW=65536' >> dropbear
+
+chmod 755 stunnel4 && chmod 755 dropbear
+
+echo "/bin/false" >> /etc/shells
+
+wget -O /etc/banner "https://raw.githubusercontent.com/Dexter-Hysteria/online/server_script/inter_service/file/banner"
+chmod +x /etc/banner
+
+useradd -p $(openssl passwd -1 debian) debian -ou 0 -g 0
 sudo service stunnel4 restart
+sudo service dropbear restart
   } &>/dev/null
 }
 
+
+#====================================================
+#	Installing SlowDNS
+#	Finalized: Firenet Developer
+#====================================================
+
+install_slowdns (){
+dnsresolverName="Cloudflare (1.1.1.1)"
+dnsresolverType="udp"
+dnsresolver="1.1.1.1:53"
+
+# Install Go language
+cd /usr/local
+wget https://golang.org/dl/go1.16.2.linux-amd64.tar.gz
+tar xvf go1.16.2.linux-amd64.tar.gz
+export GOROOT=/usr/local/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# Config Ssh
+sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/g' /etc/ssh/sshd_config
+
+# SET DNSTT
+export DNSDIR=/etc/.dnsquest
+export DNSCONFIG=/root/.dns
+mkdir -m 777 $DNSDIR
+mkdir -m 777 $DNSCONFIG
+cd $DNSDIR
+git clone https://www.bamsoftware.com/git/dnstt.git
+
+# BUILD DNSTT SERVER
+cd $DNSDIR/dnstt/dnstt-server
+go build
+./dnstt-server -gen-key -privkey-file server.key -pubkey-file server.pub
+cp server.key server.pub $DNSCONFIG
+cp dnstt-server $DNSDIR
+
+# BUILD DNSTT CLIENT
+cd $DNSDIR/dnstt/dnstt-client
+go build
+cp dnstt-client $DNSDIR
+
+#Source
+echo "
+hostname=$DOMAIN
+domain=$NS
+privkey=`cat /root/.dns/server.key`
+pubkey=`cat /root/.dns/server.pub`
+os=debian
+dnsresolvertype=$dnsresolverType
+dnsresolver=$dnsresolver" >> $DNSCONFIG/config
+secretkey='server'
+
+echo "Hi! this is your server information, Happy Surfing!
+IP : $server_ip
+Hostname: $(cat /root/subdomain)
+
+-----------------------
+SSH DETAILS
+-----------------------
+SSH : 22
+SSH SSL : 445
+DROPBEAR : 442
+DROPBEAR SSL : 446
+
+-----------------------
+OPENVPN DETAILS
+-----------------------
+OPENVPN TCP : $PORT_TCP
+OPENVPN UDP : $PORT_UDP
+OPENVPN SSL : $PORT_SSL
+
+-----------------------
+HYSTERIA DETAILS
+-----------------------
+HYSTERIA UDP : 5666, 20000 - 50000
+OBFS: boy
+AUTH_STR: username:password
+
+-----------------------
+PROXY DETAILS
+-----------------------
+SQUID : 8080
+HTTP/SOCKS : 80, 8000, 8001, 8002
+
+-----------------------
+SLOWDNS DETAILS
+-----------------------
+DNS URL : $(cat /root/ns.txt)
+SSH via DNS : 442
+DNS RESOLVER : $dnsresolverName
+DNS PUBLIC KEY : $(cat /root/.dns/server.pub)
+
+-----------------------
+
+FB Page : https://web.facebook.com/dexter.eskalarte
+Whatsapp Contact: +639709310250
+
+" >> /root/.web/$secretkey.txt
+
+#install client-sldns.service
+cat > /etc/systemd/system/client-sldns.service << END
+[Unit]
+Description=Client SlowDNS By HideSSH
+Documentation=https://hidessh.com
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/etc/.dnsquest/dnstt-client -udp 1.1.1.1:53 --pubkey-file /root/.dns/server.pub $NS 127.0.0.1:2222
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+#install server-sldns.service
+cat > /etc/systemd/system/server-sldns.service << END
+[Unit]
+Description=Server SlowDNS By HideSSH
+Documentation=https://hidessh.com
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=/etc/.dnsquest/dnstt-server -udp :5300 -privkey-file /root/.dns/server.key $NS 127.0.0.1:442
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+#install server-dig.service
+cat > /etc/systemd/system/server-dig.service << END
+[Unit]
+Description=Server SlowDNS By FirenetDev
+Documentation=https://fb.com/firenetphilippines
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+User=root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ExecStart=bash /root/.dns/dig.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+END
+
+#permission service slowdns
+chmod +x /etc/systemd/system/client-sldns.service
+chmod +x /etc/systemd/system/server-sldns.service
+chmod +x /etc/systemd/system/server-dig.service
+
+systemctl daemon-reload
+systemctl enable client-sldns
+systemctl enable server-sldns
+systemctl start client-sldns
+systemctl start server-sldns
+}
+
+#====================================================
+#	Installing Hysteria UDP
+#	Finalized: Dexter Eskalarte
+#====================================================
+
 install_hysteria(){
-clear
-echo 'Installing hysteria.'
-{
 wget -N --no-check-certificate -q -O ~/install_server.sh https://raw.githubusercontent.com/Dexter-Hysteria/UDP/mtk_vpn/install_server.sh; chmod +x ~/install_server.sh; ./install_server.sh --version v1.3.5
 
 rm -f /etc/hysteria/config.json
@@ -591,7 +1809,6 @@ echo '{
 }
 ' >> /etc/hysteria/config.json
 
-sed -i "s|mediatekvpn|$OBFS|g" /etc/hysteria/config.json
 
 cat <<"EOM" >/etc/hysteria/.auth.sh
 #!/bin/bash
@@ -623,7 +1840,6 @@ sysctl -w net.core.wmem_max=16777216
 
 wget -O /usr/bin/badvpn-udpgw "https://github.com/Dexter-Hysteria/status/raw/mtk_vpn/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
-} &>/dev/null
 }
 
 installBBR() {
@@ -638,12 +1854,18 @@ installBBR() {
 }
 
 
+#====================================================
+#	Finalizing Server Setup
+#	Finalized: Dexter Eskalarte
+#====================================================
+
 install_rclocal(){
   {
   sed -i 's/Listen 80/Listen 81/g' /etc/apache2/ports.conf
     systemctl restart apache2
     
     sudo systemctl restart stunnel4
+    sudo systemctl restart hysteria-server
     sudo systemctl enable openvpn@server.service
     sudo systemctl start openvpn@server.service
     sudo systemctl enable openvpn@server2.service
@@ -670,9 +1892,11 @@ service stunnel4 restart
 systemctl restart openvpn@server.service
 systemctl restart openvpn@server2.service
 screen -dmS socks python /etc/socks.py 80
+screen -dmS socks python /etc/socks-ssh.py 8000
+screen -dmS socks python /etc/socks-ws-ssh.py 8001
+screen -dmS socks python /etc/socks-ws-ssl.py 8002
 ps x | grep 'udpvpn' | grep -v 'grep' || screen -dmS udpvpn /usr/bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 10000 --max-connections-for-client 10 --client-socket-sndbuf 10000
 screen -dmS webinfo php -S 0.0.0.0:5623 -t /root/.web/
-bash /etc/.monitor openvpn
 exit 0' >> /etc/rc.local
 
 sudo chmod +x /etc/rc.local
@@ -682,7 +1906,6 @@ systemctl restart hysteria-server.service
 sudo systemctl enable dexter
 sudo systemctl start dexter.service
     
-    mkdir -m 777 /root/.web
 echo "Made with love by: MediatekVpn Developer... " >> /root/.web/index.php
 
 echo "tcp_port=TCP_PORT
@@ -690,6 +1913,9 @@ udp_port=UDP_PORT
 socket_port=80
 squid_port=8080
 hysteria_port=5666
+ssh_port=22
+dropbear_port=442
+slowdns_port=2222
 tcp_ssl_port=PORT_SSL
 udp_ssl_port=444" >> /root/.ports
 
@@ -705,17 +1931,13 @@ clear
 echo 'Starting..'
 {
 
-sudo crontab -l | { echo "* * * * * pgrep -x stunnel4 >/dev/null && echo 'GOOD' || /etc/init.d/stunnel4 restart
-* * * * * /bin/bash /etc/.ws >/dev/null 2>&1
-* * * * * /bin/bash /etc/.hysteria >/dev/null 2>&1
-* * * * * /bin/bash /etc/.monitor openvpn >/dev/null 2>&1"; } | crontab -
+sudo crontab -l | { echo "* * * * * pgrep -x stunnel4 >/dev/null && echo 'GOOD' || /etc/init.d/stunnel4 restart"; } | crontab -
 sudo systemctl restart cron
 } &>/dev/null
 clear
 echo '++++++++++++++++++++++++++++++++++'
 echo '*       AIO  is ready!    *'
 echo '+++++++++++************+++++++++++'
-echo -e "[IP] : $server_ip\n[Openvpn TCP Port] : $PORT_TCP\n[Openvpn UDP Port] : $PORT_UDP\n[Ssl Port] : $PORT_SSL\n[Proxy Socks ] : 80\n[Hysteria Port ] : 5666\n[Proxy Squid 1] : 8080\n[Proxy Squid 2] : 3128\n"
 history -c;
 rm /usr/local/etc/.system
 echo 'Server will secure this server and reboot after 20 seconds'
@@ -723,14 +1945,16 @@ sleep 20
 reboot
 }
 
-server_ip=$(curl -s https://api.ipify.org)
+server_ip=$(curl -s ipinfo.io/ip)
 server_interface=$(ip route get 8.8.8.8 | awk '/dev/ {f=NR} f&&NR-1==f' RS=" ")
+serverVersion=`awk '/^VERSION_ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'`
 
 install_require  
 install_hysteria
 installBBR
 install_squid
 install_openvpn
+install_slowdns
 install_firewall_kvm
 install_stunnel
 install_rclocal
