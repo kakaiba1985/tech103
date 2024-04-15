@@ -23,8 +23,8 @@ echo $SUB_DOMAIN > /root/subdomain  #save subdomain
 DOMAIN=intrl.online
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c6)
 SUB_DOMAIN=${sub}.intrl.online
-CF_ID=wilmanelson.rt@gmail.com
-CF_KEY=3206deacd1204afa426033544181c6b6051e6
+CF_ID=jaysonkakaibanisperos@gmail.com
+CF_KEY=b5cde6c6f64827a22914f308c3d89ef833504
 
 
 NS_DOMAIN=unli-${SUB_DOMAIN}
