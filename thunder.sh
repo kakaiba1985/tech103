@@ -120,15 +120,15 @@ wget 'https://raw.githubusercontent.com/kakaiba1985/tech103/main/socks.py' -O /e
 dos2unix /etc/socks.py
 chmod +x /etc/socks.py
 
-wget 'https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/socks-ssh.py' -O /etc/socks-ssh.py
+wget 'https://raw.githubusercontent.com/kakaiba1985/tech103/main/socks-ssh.py' -O /etc/socks-ssh.py
 dos2unix /etc/socks-ssh.py
 chmod +x /etc/socks-ssh.py
 
-wget 'https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/socks-ws-ssh.py' -O /etc/socks-ws-ssh.py
+wget 'https://raw.githubusercontent.com/kakaiba1985/tech103/main/socks-ws-ssh.py' -O /etc/socks-ws-ssh.py
 dos2unix /etc/socks-ws-ssh.py
 chmod +x /etc/socks-ws-ssh.py
 
-wget 'https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/socks-ws-ssl.py' -O /etc/socks-ws-ssl.py
+wget 'https://raw.githubusercontent.com/kakaiba1985/tech103/main/socks-ws-ssl.py' -O /etc/socks-ws-ssl.py
 dos2unix /etc/socks-ws-ssl.py
 chmod +x /etc/socks-ws-ssl.py
 
