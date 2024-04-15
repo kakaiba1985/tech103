@@ -11,7 +11,7 @@ PORT_UDP='110';
 PORT_SSL='443';
 
 
-wget -O autodns "https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/python/efrenauto/autodns" && chmod +x autodns && sed -i -e 's/\r$//' ~/autodns && ./autodns
+wget -O autodns "https://raw.githubusercontent.com/kakaiba1985/tech103/main/autodns" && chmod +x autodns && sed -i -e 's/\r$//' ~/autodns && ./autodns
 
 DOMAIN="$(cat /root/subdomain)"
 NS="$(cat /root/ns.txt)"
