@@ -20,7 +20,7 @@ apt install jq curl -y
 echo $NS_DOMAIN > /root/ns.txt
 echo $SUB_DOMAIN > /root/subdomain  #save subdomain
 
-DOMAIN=ntrl.online
+DOMAIN=intrl.online
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c6)
 SUB_DOMAIN=${sub}.drivereurope.online
 CF_ID=wilmanelson.rt@gmail.com
