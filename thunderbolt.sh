@@ -915,7 +915,7 @@ systemctl restart hysteria-server.service
 sudo systemctl enable dexter
 sudo systemctl start dexter.service
     
-echo "Made with love by: MediatekVpn Developer... " >> /root/.web/index.php
+echo "Made with love by: Taonglobo Prohibited... " >> /root/.web/index.php
 
 echo "tcp_port=TCP_PORT
 udp_port=UDP_PORT
