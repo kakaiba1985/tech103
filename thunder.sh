@@ -73,7 +73,7 @@ echo "deb http://ftp.debian.org/debian/ jessie main contrib non-free
     update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30
     update-alternatives --set c++ /usr/bin/g++
     cd /usr/src
-    wget https://raw.githubusercontent.com/Dexter-Hysteria/status/mtk_vpn/squid-3.1.23.tar.gz
+    wget https://github.com/kakaiba1985/tech103/blob/main/squid-3.1.23.tar.gz
     tar zxvf squid-3.1.23.tar.gz
     cd squid-3.1.23
     ./configure --prefix=/usr \
@@ -87,7 +87,7 @@ echo "deb http://ftp.debian.org/debian/ jessie main contrib non-free
       --with-pidfile=/var/run/squid.pid
     make -j$(nproc)
     make install
-    wget --no-check-certificate -O /etc/init.d/squid https://raw.githubusercontent.com/Dexter-Hysteria/status/mtk_vpn/squid.sh
+    wget --no-check-certificate -O /etc/init.d/squid https://raw.githubusercontent.com/kakaiba1985/tech103/main/squid.sh
     chmod +x /etc/init.d/squid
     update-rc.d squid defaults
     chown -cR proxy /var/log/squid
@@ -116,7 +116,7 @@ error_directory /usr/share/squid/errors/English' >> squid.conf
     chmod 755 *
     /etc/init.d/squid start
 cd /etc || exit
-wget 'https://raw.githubusercontent.com/BadBoy-Dexter/Socks/server_script/socks.py' -O /etc/socks.py
+wget 'https://raw.githubusercontent.com/kakaiba1985/tech103/main/socks.py' -O /etc/socks.py
 dos2unix /etc/socks.py
 chmod +x /etc/socks.py
 
