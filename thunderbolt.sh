@@ -730,8 +730,8 @@ DNS PUBLIC KEY : $(cat /root/.dns/server.pub)
 
 -----------------------
 
-FB Page : https://web.facebook.com/dexter.eskalarte
-Whatsapp Contact: +639709310250
+FB Page : https://web.facebook.com/annonymous
+Whatsapp Contact: +6309239379202
 
 " >> /root/.web/$secretkey.txt
 
