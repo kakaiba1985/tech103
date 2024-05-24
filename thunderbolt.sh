@@ -624,6 +624,8 @@ sudo service dropbear restart
 #====================================================
 
 install_slowdns (){
+echo "Installing dns..."
+{
 dnsresolverName="Cloudflare (1.1.1.1)"
 dnsresolverType="udp"
 dnsresolver="1.1.1.1:53"
@@ -644,7 +646,7 @@ export DNSCONFIG=/root/.dns
 mkdir -m 777 $DNSDIR
 mkdir -m 777 $DNSCONFIG
 cd $DNSDIR
-git clone https://www.bamsoftware.com/git/dnstt.git
+git clone https://github.com/NuclearDevilStriker/dnstt.git
 
 # BUILD DNSTT SERVER
 cd $DNSDIR/dnstt/dnstt-server
@@ -669,7 +671,30 @@ dnsresolvertype=$dnsresolverType
 dnsresolver=$dnsresolver" >> $DNSCONFIG/config
 secretkey='server'
 
+#API Details
+VPN_Owner='Dexter';
+
+cat <<EOF >/root/authentication.sh
+#!/bin/bash
+SHELL=/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+wget -O /root/active.sh "$API_LINK/active.php?key=$API_KEY"
+sleep 5
+wget -O /root/inactive.sh "$API_LINK/inactive.php?key=$API_KEY"
+sleep 5
+wget -O /root/deleted.sh "$API_LINK/deleted.php?key=$API_KEY"
+sleep 15
+bash /root/active.sh
+sleep 15
+bash /root/inactive.sh
+sleep 15
+bash /root/deleted.sh
+EOF
+
+echo -e "* *\t* * *\troot\tsudo bash /root/authentication.sh" >> "/etc/cron.d/account"
+
 echo "Hi! this is your server information, Happy Surfing!
+
 IP : $server_ip
 Hostname: $(cat /root/subdomain)
 
@@ -688,12 +713,6 @@ OPENVPN TCP : $PORT_TCP
 OPENVPN UDP : $PORT_UDP
 OPENVPN SSL : $PORT_SSL
 
------------------------
-HYSTERIA DETAILS
------------------------
-HYSTERIA UDP : 5666, 20000 - 50000
-OBFS: boy
-AUTH_STR: username:password
 
 -----------------------
 PROXY DETAILS
@@ -711,8 +730,8 @@ DNS PUBLIC KEY : $(cat /root/.dns/server.pub)
 
 -----------------------
 
-FB Page : annonymous
-Whatsapp Contact: +639239379202
+FB Page : https://web.facebook.com/dexter.eskalarte
+Whatsapp Contact: +639709310250
 
 " >> /root/.web/$secretkey.txt
 
@@ -759,7 +778,7 @@ END
 #install server-dig.service
 cat > /etc/systemd/system/server-dig.service << END
 [Unit]
-Description=Server SlowDNS By FirenetDev
+Description=Server SlowDNS By DexterDev
 Documentation=https://fb.com/firenetphilippines
 After=network.target nss-lookup.target
 
@@ -786,6 +805,20 @@ systemctl enable client-sldns
 systemctl enable server-sldns
 systemctl start client-sldns
 systemctl start server-sldns
+
+} &>/dev/null
+}
+
+
+installBBR() {
+    echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+    echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+    sysctl -p
+    
+    apt install -y linux-generic-hwe-20.04
+    grub-set-default 0
+    echo "tcp_bbr" >> /etc/modules-load.d/modules.conf
+    INSTALL_BBR=true
 }
 
 #====================================================
