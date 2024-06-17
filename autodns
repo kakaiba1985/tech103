@@ -20,7 +20,7 @@ apt install jq curl -y
 echo $NS_DOMAIN > /root/ns.txt
 echo $SUB_DOMAIN > /root/subdomain  #save subdomain
 
-DOMAIN=intrl.online
+DOMAIN=bsb-international.net
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c6)
 SUB_DOMAIN=${sub}.bsb-international.net
 CF_ID=jaysonkakaibanisperos@gmail.com
