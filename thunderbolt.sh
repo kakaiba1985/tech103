@@ -678,11 +678,11 @@ cat <<EOF >/root/authentication.sh
 #!/bin/bash
 SHELL=/bin/bash
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
-wget -O /root/active.sh "active.php"
+wget -O /root/active.sh "active.php?key=$API_KEY"
 sleep 5
-wget -O /root/inactive.sh "inactive.php"
+wget -O /root/inactive.sh "inactive.php?key=$API_KEY"
 sleep 5
-wget -O /root/deleted.sh "deleted.php"
+wget -O /root/deleted.sh "deleted.php?key=$API_KEY"
 sleep 15
 bash /root/active.sh
 sleep 15
