@@ -2,10 +2,10 @@
 #Script Variables
 apt update
 apt install sudo
-HOST='195.35.10.163';
-USER='u844717466_thunderbolt';
+HOST='89.117.9.95';
+USER='u699707652_techuser';
 PASS='kakaibA123A';
-DBNAME='u844717466_thunder';
+DBNAME='u699707652_techno';
 PORT_TCP='1194';
 PORT_UDP='110';
 PORT_SSL='443';
